@@ -1,0 +1,12 @@
+services:
+  yocto:
+    build:
+      context: ./yocto/
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./yocto/workspace/:/workspace/
+    ports:
+      - "8000:8000"
+
+
