@@ -2,11 +2,20 @@ services:
   yocto:
     build:
       context: ./yocto/
+    hostname: yocto
     tty: true
     stdin_open: true
     volumes:
       - ./yocto/workspace/:/workspace/
     ports:
       - "8000:8000"
+  buildroot:
+    build:
+      context: ./buildroot/
+    hostname: buildroot
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./buildroot/workspace/:/workspace/
 
 
