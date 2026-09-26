@@ -1,0 +1,13 @@
+--- busybox-1.37.0/libbb/hash_md5_sha.c	2024-09-26 19:00:52.000000000 +0500
++++ busybox-1.37.0_patched/libbb/hash_md5_sha.c	2026-01-14 06:47:29.928057497 +0500
+@@ -1313,8 +1313,10 @@
+ 	hash_size = 8;
+ 	if (ctx->process_block == sha1_process_block64
+ #if ENABLE_SHA1_HWACCEL
++#if defined(__GNUC__) && (defined(__i386__) || defined(__x86_64__))
+ 	 || ctx->process_block == sha1_process_block64_shaNI
+ #endif
++#endif
+ 	) {
+ 		hash_size = 5;
+ 	}
