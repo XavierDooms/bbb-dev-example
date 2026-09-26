@@ -19,6 +19,15 @@ services:
     volumes:
       - ./buildroot/workspace/:/workspace/
     restart: unless-stopped
+  debian:
+    build:
+      context: ./debian/
+    hostname: debian
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./debian/workspace/:/workspace/
+    restart: unless-stopped
   ubuntu:
     build:
       context: ./ubuntu/
