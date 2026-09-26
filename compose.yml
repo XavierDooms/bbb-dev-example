@@ -8,7 +8,8 @@ services:
     volumes:
       - ./yocto/workspace/:/workspace/
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
+    restart: unless-stopped
   buildroot:
     build:
       context: ./buildroot/
@@ -17,5 +18,13 @@ services:
     stdin_open: true
     volumes:
       - ./buildroot/workspace/:/workspace/
-
-
+    restart: unless-stopped
+  ubuntu:
+    build:
+      context: ./ubuntu/
+    hostname: ubuntu
+    tty: true
+    stdin_open: true
+    volumes:
+      - ./ubuntu/workspace/:/workspace/
+    restart: unless-stopped
