@@ -50,6 +50,7 @@ RUN groupmod -g $GID ubuntu && \
 RUN install -o "${UID}" -g "${GID}" -d /workspace
 
 COPY rootfs/ /
+RUN chown -R ubuntu /home/ubuntu
 
 USER ubuntu
 
