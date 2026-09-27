@@ -53,8 +53,7 @@ RUN apt update && \
 # Install optional buildroot packages
 RUN apt update && \
     apt install -y \
-    gcc-arm-linux-gnueabi \
-    gcc-arm-linux-gnueabihf
+    crossbuild-essential-armhf
 
 # ubuntu 26.04 uutils's "install" command is broken
 RUN update-alternatives --install /usr/bin/install install /usr/bin/gnuinstall 100
